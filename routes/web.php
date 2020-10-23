@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Roles;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.main');
+Route::get('/welcome', function() {
+    return view('welcome');
+})->name('welcome');
+
+Route::get('/', 'PagesController@index')->name('home');
+
+Route::group(['middleware' => ['auth','roles:admin']], function() {
+    Route::get('/admin/home', 'AdminController@index')->name('homeAdmin');
 });
+
+Route::group(['middleware' => ['auth','roles:member']], function() {
+    Route::get('/member/home', 'MemberController@index')->name('homeMember');
+});
+
+Route::get('/login', 'LoginController@login')->name('login')->middleware('guest');
+Route::post('/verifyLogin', 'LoginController@verifyLogin')->name('verifyLogin')->middleware('guest');
+Route::get('/logout', 'LoginController@logout')->name('logout')->middleware('auth');

@@ -7,29 +7,41 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
+    
     <title>Phizza Hut</title>
+
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-danger fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger" id="mainNav">
       <div class="container">
-        <img src="{{URL::asset('/image/pizza-logo.png')}}" alt="" height="60" width="60" style="margin-right:10px">
-          <a class="navbar-brand text-white" href="#page-top">PHizza Hut</a>
+        <img src="{{ asset('/image/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
+        <a class="navbar-brand text-white" href=" {{ route('home') }}">PHizza Hut</a>
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ml-auto">
-                  <li class="nav-item active">
-                      <a class="nav-link text-white js-scroll-trigger" href="#">View Transaction History</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link text-white js-scroll-trigger" href="#">View Cart</a>
-                  </li>
+          <div class="collapse navbar-collapse d-inline-block" id="navbarNav">
+              <ul class="navbar-nav ml-auto">  
+                @if (Route::has('login'))
+                    @auth
+                      <li class="nav-item">
+                        <a class="nav-link text-white js-scroll-trigger" href="#">View Transaction History</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white js-scroll-trigger" href="#">View Cart</a>
+                      </li>
+                    @else
+                      <a href="{{ route('login') }}" class="nav-link text-white js-scroll-trigger">Login</a>        
+                      @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="nav-link text-white js-scroll-trigger">Register</a>
+                      @endif
+                    @endauth
+                @endif
               </ul>
           </div>
       </div>
   </nav>
+
+  @yield('content')
 
     <!-- Optional JavaScript; choose one of the two! -->
 
