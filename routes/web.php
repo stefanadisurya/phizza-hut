@@ -14,20 +14,22 @@ use App\Http\Middleware\Roles;
 |
 */
 
-Route::get('/welcome', function() {
+Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/', 'PagesController@index')->name('home');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', 'PagesController@index')->name('root');
 
-Route::group(['middleware' => ['auth','roles:admin']], function() {
-    Route::get('/admin/home', 'AdminController@index')->name('homeAdmin');
+    Route::get('/login', 'AuthController@login')->name('login');
+    Route::post('/login', 'AuthController@postLogin');
+
+    Route::get('/register', 'AuthController@register')->name('register');
+    Route::post('/register', 'AuthController@postRegister');
 });
 
-Route::group(['middleware' => ['auth','roles:member']], function() {
-    Route::get('/member/home', 'MemberController@index')->name('homeMember');
-});
+Route::get('/logout', 'AuthController@logout')->name('logout');
 
-Route::get('/login', 'LoginController@login')->name('login')->middleware('guest');
-Route::post('/verifyLogin', 'LoginController@verifyLogin')->name('verifyLogin')->middleware('guest');
-Route::get('/logout', 'LoginController@logout')->name('logout')->middleware('auth');
+Route::group(['middleware' => ['auth', 'roles:admin,member']], function () {
+    Route::get('/home', 'PagesController@home')->name('home');
+});

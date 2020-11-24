@@ -16,6 +16,11 @@ class PagesController extends Controller
         return view('guest.index');
     }
 
+    public function home()
+    {
+        return view('home');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
