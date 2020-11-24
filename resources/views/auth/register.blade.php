@@ -100,8 +100,8 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row d-flex justify-content-center">
-                                <div class="col-lg-4 d-flex justify-content-end">
+                            <div class="form-group row d-flex justify-content-start">
+                                <div class="col-lg-6 d-flex justify-content-end">
                                     <button type="submit" class="btn btn-primary">Register</button>
                                 </div>
                             </div>
