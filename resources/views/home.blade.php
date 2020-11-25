@@ -8,7 +8,7 @@
     <hr>
     <div class="container my-2">
         <p class="h2 text-muted">order it now!</p>
-        
+
         @if(auth()->user()->role=="admin")
             <a href="{{ route('add') }}">
                 <button class="btn btn-dark text-white mb-4">Add Pizza</button>
