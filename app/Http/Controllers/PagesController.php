@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pizza;
 
 class PagesController extends Controller
 {
@@ -13,7 +14,8 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('guest.index');
+        $pizzas = Pizza::paginate(6);
+        return view('guest.index', ['pizzas' => $pizzas]);
     }
 
     /**

@@ -1,5 +1,5 @@
 <div class="collapse navbar-collapse d-inline-block" id="navbarNav">
-  <img src="{{ asset('/assets/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
+  <img src="{{ asset('/assets/image/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
   @guest
     <a class="navbar-brand text-white" href=" {{ route('root') }}">PHizza Hut</a>
   @else
@@ -37,10 +37,6 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item text-dark" href="{{ route('add') }}">{{ __('Add Pizza') }}</a>
-
-                    <div class="dropdown-divider"></div>
-
                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
