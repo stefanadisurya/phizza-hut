@@ -32,7 +32,7 @@
                                 <label for="price" class="col-md-4 col-form-label text-md-left">{{ __('Pizza Price') }}:</label>
     
                                 <div class="col-md-6">
-                                    <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
+                                    <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price">
     
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                                 <label for="description" class="col-md-4 col-form-label text-md-left">{{ __('Pizza Description') }}:</label>
     
                                 <div class="col-md-6">
-                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus>
+                                    <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description">
     
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
@@ -60,8 +60,7 @@
                                 <label for="image" class="col-md-4 col-form-label text-md-left">{{ __('Pizza Image') }}:</label>
     
                                 <div class="col-md-6">
-                                    {{-- <input id="image" type="text" class="form-control @error('image') is-invalid @enderror" name="image" required autocomplete="image" autofocus> --}}
-                                    <input type="file" name="image" id="image">
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" required>
     
                                     @error('image')
                                         <span class="invalid-feedback" role="alert">

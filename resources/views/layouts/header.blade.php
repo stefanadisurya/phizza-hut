@@ -1,5 +1,5 @@
 <div class="collapse navbar-collapse d-inline-block" id="navbarNav">
-  <img src="{{ asset('/image/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
+  <img src="{{ asset('/assets/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
   @guest
     <a class="navbar-brand text-white" href=" {{ route('root') }}">PHizza Hut</a>
   @else
