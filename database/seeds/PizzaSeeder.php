@@ -17,7 +17,7 @@ class PizzaSeeder extends Seeder
                 'name' => 'Cheese Bomb',
                 'price' => 80000,
                 'description' => "Pizza with mozarella cheese, tomato sauce, and another cheese",
-                'image' => 'cheesebomb.jpg'
+                'image' => 'cheese.jpg'
             ],
             [
                 'name' => 'Tuna Man',
@@ -35,7 +35,7 @@ class PizzaSeeder extends Seeder
                 'name' => 'Lamb and Onion',
                 'price' => 85000,
                 'description' => "Pizza with lamb meat, some onion and cheese on top, coated with our special sauce",
-                'image' => 'spicedlamb.jpg'
+                'image' => 'spicedlamb.jpeg'
             ],
             [
                 'name' => 'Garlic Hectic',
@@ -44,16 +44,16 @@ class PizzaSeeder extends Seeder
                 'image' => 'garlicchicken.jpg'
             ],
             [
+                'name' => "Bacon 'N Egg",
+                'price' => 75000,
+                'description' => "What could go wrong with bacon and egg for breakast? Absolutely nothing",
+                'image' => 'baconandegg.jpg'
+            ],
+            [
                 'name' => 'Hawaiian',
                 'price' => 75000,
                 'description' => "Pizza with sausages, cheese, and straight up Hawaii inside",
                 'image' => 'hawaiian.jpg'
-            ],
-            [
-                'name' => "Bacon 'N Egg",
-                'price' => 75000,
-                'description' => "What could go wrong with bacon and egg for breakast? Absolutely nothing",
-                'image' => 'bacondandegg.jpg'
             ],
             [
                 'name' => 'Beef Pepper',
@@ -90,12 +90,6 @@ class PizzaSeeder extends Seeder
                 'price' => 120000,
                 'description' => "It’s a true supreme pizza: bacon, pepperoni slices, red and green bell pepper, red onion, black olives, mozzarella, parmesan, and basil to make you feel supreme",
                 'image' => 'supreme.jpg'
-            ],
-            [
-                'name' => "Tuna 'N Onion",
-                'price' => 110000,
-                'description' => "This Tuna 'N Onion Pizza is a classic pizza and you can easily find it on any pizzeria menu in Italy",
-                'image' => 'tunaandonion.jpg'
             ],
             [
                 'name' => "Veggie Mania",
