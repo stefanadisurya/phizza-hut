@@ -30,7 +30,7 @@
                                     </div>
 
                                     <div class="col-md-6 my-2">
-                                        <a href="#" class="btn btn-danger">Delete Pizza</a>
+                                        <a href="/delete/{{ $pizza->id }}" class="btn btn-danger">Delete Pizza</a>
                                     </div>
                                 </div>
                             </div>

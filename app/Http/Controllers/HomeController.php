@@ -27,9 +27,4 @@ class HomeController extends Controller
         $pizzas = Pizza::paginate(6);
         return view('home', ['pizzas' => $pizzas]);
     }
-
-    public function guest()
-    {
-        return view('guest.index');
-    }
 }

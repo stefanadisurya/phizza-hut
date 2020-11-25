@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\User;
 use App\Pizza;
 
@@ -40,5 +41,18 @@ class AdminController extends Controller
         $request->image->storeAs('image', $filename, 'public');
 
         return redirect()->back();
+    }
+
+    public function deletePizza(Pizza $pizza)
+    {
+        return view('admin.delete', ['pizza' => $pizza]);
+    }
+
+    public function destroy(Pizza $pizza)
+    {
+        Pizza::destroy($pizza->id);
+        Alert::success('Delete Success!', 'Pizza deleted');
+
+        return redirect()->route('home');
     }
 }

@@ -29,4 +29,6 @@ Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/getUser', 'AdminController@getUser')->name('getUser');
     Route::get('/add', 'AdminController@addPizza')->name('add');
     Route::post('/add', 'AdminController@store');
+    Route::get('/delete/{pizza}', 'AdminController@deletePizza')->name('delete');
+    Route::delete('/delete/{pizza}', 'AdminController@destroy');
 });
