@@ -1,6 +1,11 @@
 <div class="collapse navbar-collapse d-inline-block" id="navbarNav">
   <img src="{{ asset('/image/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
-  <a class="navbar-brand text-white" href=" {{ route('root') }}">PHizza Hut</a>
+  @guest
+    <a class="navbar-brand text-white" href=" {{ route('root') }}">PHizza Hut</a>
+  @else
+    <a class="navbar-brand text-white" href=" {{ route('home') }}">PHizza Hut</a>
+  @endguest
+  
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -23,7 +28,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link text-white js-scroll-trigger ml-3 mr-3" href="#">View All User</a>
+              <a class="nav-link text-white js-scroll-trigger ml-3 mr-3" href="{{ route('getUser') }}">View All User</a>
             </li>
 
             <li class="nav-item dropdown">
