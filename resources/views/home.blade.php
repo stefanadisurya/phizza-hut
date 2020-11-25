@@ -19,7 +19,7 @@
                     <div class="col-md-4 my-3">
                         <div class="card" style="width: 20rem;">
                             <a href="">
-                                <img src="{{ asset('/assets/image' . $pizza->image) }}" class="card-img-top">
+                                <img src="{{ asset('assets/image/' . $pizza->image) }}" style="height:300px" class="card-img-top">
                                 <div class="card-body">
                                     <h5 class="card-title font-weight-bold text-dark">{{ $pizza->name }}</h5>
                             </a>
