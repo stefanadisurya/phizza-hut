@@ -80,12 +80,6 @@ class PizzaSeeder extends Seeder
                 'image' => 'mushroomricotta.jpeg'
             ],
             [
-                'name' => 'Spiced Lamb',
-                'price' => 80000,
-                'description' => "Pizza with lamb, spices, and a little bit of heat to beat the meat",
-                'image' => 'spicedlamb.jpeg'
-            ],
-            [
                 'name' => 'Supreme One',
                 'price' => 120000,
                 'description' => "It’s a true supreme pizza: bacon, pepperoni slices, red and green bell pepper, red onion, black olives, mozzarella, parmesan, and basil to make you feel supreme",
