@@ -37,6 +37,10 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item text-dark" href="{{ route('add') }}">{{ __('Add Pizza') }}</a>
+
+                    <div class="dropdown-divider"></div>
+
                     <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

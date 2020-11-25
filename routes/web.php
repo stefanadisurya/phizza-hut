@@ -27,8 +27,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/getUser', 'AdminController@getUser')->name('getUser');
+    Route::get('/add', 'AdminController@addPizza')->name('add');
+    Route::post('/add', 'AdminController@store');
 });
-
-// Route::group(['middleware' => ['auth', 'roles:admin,member']], function () {
-//     Route::get('/home', 'PagesController@home')->name('home');
-// });

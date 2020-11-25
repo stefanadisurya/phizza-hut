@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('123456'),
                 'address' => 'Phizza Hut',
                 'phoneNumber' => '0218465780',
-                'gender' => 'male',
+                'gender' => 'Male',
                 'remember_token' => Str::random(50)
             ],
             [
@@ -29,9 +29,19 @@ class UserSeeder extends Seeder
                 'role' => 'member',
                 'email' => 'stefan@gmail.com',
                 'password' => bcrypt('123456'),
-                'address' => 'Jalan Jalan-Jalan',
+                'address' => 'Jalan Anggrek Cakra, no. 1',
                 'phoneNumber' => '081725192242',
-                'gender' => 'male',
+                'gender' => 'Male',
+                'remember_token' => Str::random(50)
+            ],
+            [
+                'username' => 'irvinesendajaya',
+                'role' => 'member',
+                'email' => 'irvine@gmail.com',
+                'password' => bcrypt('123456'),
+                'address' => 'Jalan U, no. 10',
+                'phoneNumber' => '0218459078',
+                'gender' => 'Male',
                 'remember_token' => Str::random(50)
             ]
         ]);
