@@ -1,52 +1,76 @@
 <div class="collapse navbar-collapse d-inline-block" id="navbarNav">
-    <ul class="navbar-nav ml-auto">  
-      @if (Route::has('login'))
-          @auth
-            @if(auth()->user()->role=="admin")
-              <li class="nav-item">
-                <a class="nav-link text-white js-scroll-trigger mr-3" href="#">View All User Transaction</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white js-scroll-trigger ml-3 mr-3" href="#">View All User</a>
-              </li>
-              <li class="dropdown ml-3">
-                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user text-white">
-                  <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username  ?? ''}}</div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger">
-                    <i class="fas fa-sign-out-alt"></i>Log out
-                  </a>
-                </div>
-              </li>
-            @elseif(auth()->user()->role=="member")
-              <li class="nav-item">
-                <a class="nav-link text-white js-scroll-trigger mr-3" href="#">View Transaction History</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white js-scroll-trigger ml-3 mr-3" href="#">View Cart</a>
-              </li>
-              <li class="dropdown ml-3">
-                <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user text-white">
-                  <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->username  ?? ''}}</div>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger">
-                    <i class="fas fa-sign-out-alt"></i>Log out
-                  </a>
-                </div>
-              </li>
-            @endif
-          @else
+  <img src="{{ asset('/image/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
+  <a class="navbar-brand text-white" href=" {{ route('root') }}">PHizza Hut</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="navbar-nav ml-auto">
+      @guest
           <li class="nav-item">
-            <a href="{{ route('login') }}" class="nav-link text-white js-scroll-trigger mr-3">Login</a>  
-          </li>        
-            @if (Route::has('register'))
+              <a class="nav-link text-white js-scroll-trigger mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
+          </li>
+
+          @if (Route::has('register'))
+              <li class="nav-item">
+                  <a class="nav-link text-white js-scroll-trigger ml-3" href="{{ route('register') }}">{{ __('Register') }}</a>
+              </li>
+          @endif
+      @else
+          @if(auth()->user()->role=="admin")
             <li class="nav-item">
-              <a href="{{ route('register') }}" class="nav-link text-white js-scroll-trigger ml-3">Register</a>
+              <a class="nav-link text-white js-scroll-trigger mr-3" href="#">View All User Transaction</a>
             </li>
-            @endif
-          @endauth
-      @endif
+
+            <li class="nav-item">
+              <a class="nav-link text-white js-scroll-trigger ml-3 mr-3" href="#">View All User</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white ml-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->username ?? '' }}
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                    </form>
+                </div>
+            </li>
+
+          @elseif(auth()->user()->role=="member")
+            <li class="nav-item">
+              <a class="nav-link text-white js-scroll-trigger mr-3" href="#">View Transaction History</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white js-scroll-trigger ml-3 mr-3" href="#">View Cart</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle text-white ml-3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                  {{ Auth::user()->username ?? '' }}
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+                  </form>
+              </div>
+            </li>
+          @endif
+      @endguest
     </ul>
 </div>

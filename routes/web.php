@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Roles;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +19,12 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::middleware(['guest'])->group(function () {
-    Route::get('/', 'PagesController@index')->name('root');
+Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
 
-    Route::get('/login', 'AuthController@login')->name('login');
-    Route::post('/login', 'AuthController@postLogin');
+Auth::routes();
 
-    Route::get('/register', 'AuthController@register')->name('register');
-    Route::post('/register', 'AuthController@postRegister');
-});
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/logout', 'AuthController@logout')->name('logout');
-
-Route::group(['middleware' => ['auth', 'roles:admin,member']], function () {
-    Route::get('/home', 'PagesController@home')->name('home');
-});
+// Route::group(['middleware' => ['auth', 'roles:admin,member']], function () {
+//     Route::get('/home', 'PagesController@home')->name('home');
+// });

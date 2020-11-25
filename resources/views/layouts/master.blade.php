@@ -5,12 +5,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     
     <title>
       @yield('title')
     </title>
+
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
       .navbar-nav .nav-item:not(:last-child) {
@@ -28,11 +40,6 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-danger" id="mainNav">
       <div class="container">
-        <img src="{{ asset('/image/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
-        <a class="navbar-brand text-white" href=" {{ route('home') }}">PHizza Hut</a>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
           @include('layouts.header')
       </div>
   </nav>

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -15,23 +16,23 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             [
                 'username' => 'admin',
-                'role_id' => 1,
                 'role' => 'admin',
                 'email' => 'admin@phizzahut.com',
-                'password' => '123456',
+                'password' => bcrypt('123456'),
                 'address' => 'Phizza Hut',
-                'phoneNumber' => '000000000000',
+                'phoneNumber' => '0218465780',
                 'gender' => 'male',
+                'remember_token' => Str::random(50)
             ],
             [
                 'username' => 'stefanadisurya',
-                'role_id' => 2,
                 'role' => 'member',
                 'email' => 'stefan@gmail.com',
-                'password' => '123456',
+                'password' => bcrypt('123456'),
                 'address' => 'Jalan Jalan-Jalan',
-                'phoneNumber' => '081513081131',
+                'phoneNumber' => '081725192242',
                 'gender' => 'male',
+                'remember_token' => Str::random(50)
             ]
         ]);
     }
