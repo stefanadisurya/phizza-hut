@@ -34,5 +34,12 @@ Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::delete('/delete/{pizza}', 'AdminController@destroy');
 });
 
+Route::group(['middleware' => ['auth','roles:member']], function(){
+    Route::get('/pizza/{pizza}', 'MemberController@show')->name('PizzaDetailInfo');
+    Route::post('/pizza/{pizza}', 'CartController@StoreToCart')->name('addToCart');
+});
+
+
+
 Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
 Route::get('/{pizza}', 'PagesController@show')->name('showPizza')->middleware('guest');

@@ -62,7 +62,7 @@
             @foreach ($pizzas as $pizza)
                 <div class="col-md-4 my-3">
                     <div class="card" style="width: 20rem;">
-                        <a href="#">
+                        <a href="/pizza/{{$pizza->id}}">
                             <img src="{{ asset('assets/image/' . $pizza->image) }}" style="height:250px" class="card-img-top">
                             <div class="card-body">
                             <h5 class="card-title font-weight-bold text-dark">{{ $pizza->name }}</h5>
