@@ -9,31 +9,26 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
-    
-    public function StoreToCart(Request $request, Pizza $pizza){
+
+    public function storeToCart(Request $request, Pizza $pizza)
+    {
 
         $user = auth()->user();
 
-        $this->validate($request, ['Quantity' => 'required|numeric|min:1']);
+        $this->validate($request, ['quantity' => 'required|numeric|min:1']);
 
         Cart::create([
-            'UserId' => ($user->id),
-            'PizzaId' => $pizza->id,
-            'Quantity' => $request->Quantity
+            'user_id' => $user->id,
+            'pizza_id' => $pizza->id,
+            'quantity' => $request->quantity
         ]);
 
-        Alert::success('Add to cart Success', 'Pizza added to the cart');
-        
-        return redirect()->route('PizzaDetailInfo',$pizza);
+        Alert::success('Add to Cart Success!', 'Pizza added to your cart');
 
+        return redirect()->route('show', $pizza);
     }
 
-    public function showAllCart(){
-
-        
-
+    public function showAllCart()
+    {
     }
-
-
-
 }

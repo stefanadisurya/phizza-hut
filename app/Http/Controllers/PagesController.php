@@ -50,6 +50,11 @@ class PagesController extends Controller
         return view('guest.show', ['pizza' => $pizza]);
     }
 
+    public function see(Pizza $pizza)
+    {
+        return view('show', ['pizza' => $pizza]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

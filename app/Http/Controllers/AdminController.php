@@ -15,11 +15,6 @@ class AdminController extends Controller
         return view('admin.getUser', ['users' => $users]);
     }
 
-    public function show(Pizza $pizza)
-    {
-        return view('admin.show', ['pizza' => $pizza]);
-    }
-
     public function addPizza()
     {
         return view('admin.add');

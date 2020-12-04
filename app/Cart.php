@@ -7,19 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
 
-    protected $table = 'Cart';
+    protected $table = 'carts';
 
-    protected $fillable = ['UserId','PizzaId','Quantity'];
-    
-    public function Pizza(){
-        return $this->belongsTo(Pizza::class,'PizzaId');
+    protected $fillable = ['user_id', 'pizza_id', 'quantity'];
+
+    public function pizza()
+    {
+        return $this->belongsTo(Pizza::class, 'pizza_id');
     }
 
-    public function User(){
-        return $this->belongsTo(User::class,'UserId');
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
-
-
-
-
 }
