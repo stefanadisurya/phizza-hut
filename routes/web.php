@@ -24,7 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'roles:admin,member']], function () {
-    Route::get('/pizza/{pizza}', 'PagesController@see')->name('show');
+    Route::get('/pizza/{pizza}', 'PagesController@show')->name('show');
     Route::post('/pizza/{pizza}', 'CartController@storeToCart');
 });
 
@@ -39,4 +39,4 @@ Route::group(['middleware' => ['auth', 'roles:admin']], function () {
 });
 
 Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
-Route::get('/{pizza}', 'PagesController@show')->name('showPizza')->middleware('guest');
+Route::get('/{pizza}', 'PagesController@showPizza')->name('showPizza')->middleware('guest');

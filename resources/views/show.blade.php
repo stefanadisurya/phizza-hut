@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'View Pizza Details GENERAL — Phizza Hut')
+@section('title', 'View Pizza Details — Phizza Hut')
 
 @section('content')
 <div class="container my-5">
