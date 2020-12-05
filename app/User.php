@@ -10,6 +10,10 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function HeaderTransaction(){
+        return $this->hasMany(HeaderTransaction::class);
+    }
+
     public function Cart(){
         return $this->hasMany(Cart::class);
     }

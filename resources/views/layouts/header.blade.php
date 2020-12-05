@@ -24,7 +24,7 @@
       @else
           @if(auth()->user()->role=="admin")
             <li class="nav-item">
-              <a class="nav-link text-white js-scroll-trigger mr-3" href="#">View All User Transaction</a>
+            <a class="nav-link text-white js-scroll-trigger mr-3" href="{{ route('showalltransaction')}}">View All User Transaction</a>
             </li>
 
             <li class="nav-item">
@@ -51,11 +51,11 @@
 
           @elseif(auth()->user()->role=="member")
             <li class="nav-item">
-              <a class="nav-link text-white js-scroll-trigger mr-3" href="#">View Transaction History</a>
+            <a class="nav-link text-white js-scroll-trigger mr-3" href="{{ route('showtransaction') }}">View Transaction History</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link text-white js-scroll-trigger ml-3 mr-3" href="#">View Cart</a>
+            <a class="nav-link text-white js-scroll-trigger ml-3 mr-3" href="{{ route('showcart') }}">View Cart</a>
             </li>
 
             <li class="nav-item dropdown">

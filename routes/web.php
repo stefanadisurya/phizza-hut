@@ -32,11 +32,19 @@ Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::post('/edit/{pizza}', 'AdminController@update');
     Route::get('/delete/{pizza}', 'AdminController@deletePizza')->name('delete');
     Route::delete('/delete/{pizza}', 'AdminController@destroy');
+    Route::get('/alltransactionlist','TransactionController@showall')->name('showalltransaction');
+    Route::get('/detailtransactionlistforadmin/{Htrans}','TransactionController@showdetailtransaction')->name('showdetailtransactionforadmin');
 });
 
 Route::group(['middleware' => ['auth','roles:member']], function(){
     Route::get('/pizza/{pizza}', 'MemberController@show')->name('PizzaDetailInfo');
     Route::post('/pizza/{pizza}', 'CartController@StoreToCart')->name('addToCart');
+    Route::get('/cartlist','CartController@showAllCart')->name('showcart');
+    Route::post('/cartlist/update/{item}','CartController@updateQuantity')->name('updatequantity');
+    Route::delete('/cartlist/delete/{item}','CartController@deleteItemFromCart')->name('delete');
+    Route::post('/cartlist','CartController@checkout')->name('checkout');
+    Route::get('/transactionlist','TransactionController@show')->name('showtransaction');
+    Route::get('/detailtransactionlist/{Htrans}','TransactionController@showdetailtransaction')->name('showdetailtransaction');
 });
 
 
