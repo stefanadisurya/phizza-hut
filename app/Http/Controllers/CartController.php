@@ -7,6 +7,7 @@ use App\DetailTransaction;
 use App\HeaderTransaction;
 use App\Pizza;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
@@ -19,11 +20,15 @@ class CartController extends Controller
 
         $this->validate($request, ['quantity' => 'required|numeric|min:1']);
 
-        Cart::create([
-            'user_id' => $user->id,
-            'pizza_id' => $pizza->id,
-            'quantity' => $request->quantity
-        ]);
+        if (Cart::where("user_id", "=", $user->id)->count() > 0 && Cart::where("pizza_id", "=", $pizza->id)->count() > 0) {
+            Cart::where([["user_id", "=", $user->id], ["pizza_id", "=", $pizza->id]])->increment('quantity', $request->quantity);
+        } else {
+            Cart::create([
+                'user_id' => $user->id,
+                'pizza_id' => $pizza->id,
+                'quantity' => $request->quantity
+            ]);
+        }
 
         Alert::success('Add to Cart Success!', 'Pizza added to cart');
 

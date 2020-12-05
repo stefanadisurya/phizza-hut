@@ -66,7 +66,7 @@
             <div class="d-flex justify-content-center" style="text-align: center" >
                 <form action="{{ route('checkout') }}" method="post">
                     @csrf
-                    <button type="submit" class="btn btn-dark">
+                    <button type="submit" class="btn btn-dark my-3">
                         {{ __('Checkout') }}
                     </button>
                 </form>
