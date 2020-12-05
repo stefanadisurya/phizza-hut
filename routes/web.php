@@ -15,14 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/add', 'AdminController@addPizza')->name('add');
@@ -46,8 +41,6 @@ Route::group(['middleware' => ['auth', 'roles:member']], function () {
     Route::get('/transactionList', 'TransactionController@show')->name('showtransaction');
     Route::get('/detailTransactionList/{Htrans}', 'TransactionController@showdetailtransaction')->name('showdetailtransaction');
 });
-
-
 
 Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
 Route::get('/{pizza}', 'PagesController@showPizza')->name('showPizza')->middleware('guest');
