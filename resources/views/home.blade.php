@@ -49,19 +49,23 @@
             </div>
 
         @elseif(auth()->user()->role=="member")
-            <div class="row">
-                <div class="col-md-2 my-2">
-                    <p class="text-dark h5">Search Pizza: </p>
-                </div>
-
-                <div class="col-md-6">
-                    <input class="form-control mr-sm-2" type="search" aria-label="Search">
-                </div>
-
-                <div class="col-md-2">
-                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-                </div>
+            
+                <form method="GET" action=" {{ route('home') }}">
+                    <div class="row">
+                    <div class="col-md-2 my-2">
+                        <p class="text-dark h5">Search Pizza: </p>
+                    </div>
+    
+                    <div class="col-md-6">
+                        <input class="form-control mr-sm-2" type="search" name="search" aria-label="Search">
+                    </div>
+    
+                    <div class="col-md-2">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                    
             </div>
+                </form>
 
             <div class="row justify-content-start">
                 @forelse ($pizzas as $pizza)
