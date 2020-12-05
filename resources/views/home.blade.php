@@ -15,7 +15,7 @@
             </a>
 
             <div class="row justify-content-start">
-                @foreach ($pizzas as $pizza)
+                @forelse ($pizzas as $pizza)
                     <div class="col-md-4 my-3">
                         <div class="card" style="width: 20rem;">
                             <a href="/pizza/{{ $pizza->id }}">
@@ -36,7 +36,12 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+
+                    @empty
+                        <div class="d-flex justify-content-center my-5">
+                            <p class="h4 text-muted">No item in the store</p>
+                        </div>
+                @endforelse
 
                 <div class="container d-flex justify-content-center my-3">
                     {{ $pizzas->links() }}
@@ -59,7 +64,7 @@
             </div>
 
             <div class="row justify-content-start">
-                @foreach ($pizzas as $pizza)
+                @forelse ($pizzas as $pizza)
                     <div class="col-md-4 my-3">
                         <div class="card" style="width: 20rem;">
                             <a href="/pizza/{{$pizza->id}}">
@@ -71,7 +76,12 @@
                                 </div>
                         </div>
                     </div>
-                @endforeach
+
+                    @empty
+                        <div class="d-flex justify-content-center my-5">
+                            <p class="h4 text-muted">No item in the store</p>
+                        </div>
+                @endforelse
 
                 <div class="container d-flex justify-content-center my-3">
                     {{ $pizzas->links() }}
@@ -79,7 +89,7 @@
 
         @else
             <div class="row justify-content-start">
-                @foreach ($pizzas as $pizza)
+                @forelse ($pizzas as $pizza)
                     <div class="col-md-4 my-3">
                         <div class="card" style="width: 20rem;">
                             <a href="/{{ $pizza->id }}">
@@ -91,7 +101,12 @@
                                 </div>
                         </div>
                     </div>
-                @endforeach
+
+                    @empty
+                        <div class="d-flex justify-content-center my-5">
+                            <p class="h4 text-muted">No item in store</p>
+                        </div>
+                @endforelse
             </div>
 
             <div class="container d-flex justify-content-center my-3">

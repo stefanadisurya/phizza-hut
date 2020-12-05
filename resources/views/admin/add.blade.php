@@ -60,7 +60,7 @@
                                 <label for="image" class="col-md-4 col-form-label text-md-left">{{ __('Pizza Image') }}:</label>
     
                                 <div class="col-md-6">
-                                    <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" required>
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" value="{{ old('image') }}" required>
     
                                     @error('image')
                                         <span class="invalid-feedback" role="alert">

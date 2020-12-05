@@ -1,17 +1,17 @@
 @extends('layouts.master')
 
-@section('title', 'showcart — Phizza Hut')
+@section('title', 'Transaction Details — Phizza Hut')
 
 @section('content')
 
 @if(auth()->user()->role=="admin" || auth()->user()->role=="member" )
 
-@foreach ($detailtransactionlist as $transaction)
+@forelse ($detailtransactionlist as $transaction)
 
     <div class="container my-5">
         <div class="row justify-content-start">
-            <div class="col-md-12 my-3">
-                <div class="card border-light mt-5 mb-3">
+            <div class="col-md-12 my-0">
+                <div class="card mt-0 mb-0 bg-transparent">
                     <div class="row showcase-left">
                         <div class="col-sm-4 mr-0">
                             <img src="{{ asset('assets/image/' . $transaction->Pizza->image) }}" class="mx-3 my-3" alt="{{ $transaction->Pizza->name }}" style="width: 370px; height: 350px">
@@ -28,7 +28,12 @@
         </div>  
     </div>
 
-@endforeach
+    @empty
+        <div class="d-flex justify-content-center my-5">
+            <p class="h4 text-muted">No transaction</p>
+        </div>
+
+@endforelse
 
 @endif
 

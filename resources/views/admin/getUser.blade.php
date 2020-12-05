@@ -5,7 +5,7 @@
 @section('content')
     <div class="container my-5">
         <div class="row justify-content-start">
-            @foreach ($users as $user)
+            @forelse ($users as $user)
             <div class="col-md-3 my-3">
                 <div class="card">
                     <div class="card-header bg-danger text-white">{{ __('User ID') }}: {{ $user->id }}</div>
@@ -19,7 +19,12 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+
+            @empty
+                <div class="d-flex justify-content-center my-5">
+                    <p class="h4 text-muted">No user</p>
+                </div>
+            @endforelse
         </div>
     </div>
 @endsection
