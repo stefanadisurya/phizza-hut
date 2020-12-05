@@ -21,7 +21,7 @@
                 
                                     <p>Rp. {{ $cart->Pizza->price }}</p>
                                     
-                                    <p>Quantity :  {{ $cart->Quantity }}</p>
+                                    <p>Quantity :  {{ $cart->quantity }}</p>
                                     <br>
                                     <form method="POST" action="/cartlist/update/{{$cart->id}} ">
                                         @csrf

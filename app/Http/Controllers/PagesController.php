@@ -45,9 +45,14 @@ class PagesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Pizza $pizza)
+    public function showPizza(Pizza $pizza)
     {
         return view('guest.show', ['pizza' => $pizza]);
+    }
+
+    public function show(Pizza $pizza)
+    {
+        return view('show', ['pizza' => $pizza]);
     }
 
     /**

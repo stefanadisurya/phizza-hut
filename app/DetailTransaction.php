@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DetailTransaction extends Model
 {
 
-    protected $table = 'detailtransaction';
+    protected $table = 'detailtransactions';
 
     protected $fillable = ['TransactionId','PizzaId','Quantity'];
 
@@ -15,7 +15,7 @@ class DetailTransaction extends Model
         return $this->belongsTo(Pizza::class,'PizzaId');
     }
 
-    public function HeaderTransaction(){
+    public function HeaderTransactions(){
         return $this->belongsTo(HeaderTransaction::class,'TransactionId');
     }
 }

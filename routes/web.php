@@ -23,22 +23,22 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::group(['middleware' => ['auth', 'roles:admin']], function () {
-    Route::get('/getUser', 'AdminController@getUser')->name('getUser');
-    Route::get('/pizza/{pizza}', 'AdminController@show')->name('show');
     Route::get('/add', 'AdminController@addPizza')->name('add');
     Route::post('/add', 'AdminController@store');
     Route::get('/edit/{pizza}', 'AdminController@editPizza')->name('edit');
     Route::post('/edit/{pizza}', 'AdminController@update');
     Route::get('/delete/{pizza}', 'AdminController@deletePizza')->name('delete');
+    Route::get('/getUser', 'AdminController@getUser')->name('getUser');
     Route::delete('/delete/{pizza}', 'AdminController@destroy');
     Route::get('/alltransactionlist','TransactionController@showall')->name('showalltransaction');
     Route::get('/detailtransactionlistforadmin/{Htrans}','TransactionController@showdetailtransaction')->name('showdetailtransactionforadmin');
 });
 
 Route::group(['middleware' => ['auth','roles:member']], function(){
-    Route::get('/pizza/{pizza}', 'MemberController@show')->name('PizzaDetailInfo');
-    Route::post('/pizza/{pizza}', 'CartController@StoreToCart')->name('addToCart');
+    Route::get('/pizza/{pizza}', 'PagesController@show')->name('show');
+    Route::post('/pizza/{pizza}', 'CartController@storeToCart');
     Route::get('/cartlist','CartController@showAllCart')->name('showcart');
     Route::post('/cartlist/update/{item}','CartController@updateQuantity')->name('updatequantity');
     Route::delete('/cartlist/delete/{item}','CartController@deleteItemFromCart')->name('delete');
@@ -50,4 +50,4 @@ Route::group(['middleware' => ['auth','roles:member']], function(){
 
 
 Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
-Route::get('/{pizza}', 'PagesController@show')->name('showPizza')->middleware('guest');
+Route::get('/{pizza}', 'PagesController@showPizza')->name('showPizza')->middleware('guest');

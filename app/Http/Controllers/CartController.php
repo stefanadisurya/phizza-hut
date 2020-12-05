@@ -11,32 +11,32 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CartController extends Controller
 {
-    
-    public function StoreToCart(Request $request, Pizza $pizza){
+
+    public function storeToCart(Request $request, Pizza $pizza)
+    {
 
         $user = auth()->user();
 
-        $this->validate($request, ['Quantity' => 'required|numeric|min:1']);
+        $this->validate($request, ['quantity' => 'required|numeric|min:1']);
 
         Cart::create([
-            'UserId' => ($user->id),
-            'PizzaId' => $pizza->id,
-            'Quantity' => $request->Quantity
+            'user_id' => $user->id,
+            'pizza_id' => $pizza->id,
+            'quantity' => $request->quantity
         ]);
 
-        Alert::success('Add to cart Success', 'Pizza added to the cart');
-        
-        return redirect()->route('PizzaDetailInfo',$pizza);
+        Alert::success('Add to Cart Success!', 'Pizza added to your cart');
 
+        return redirect()->route('show', $pizza);
     }
 
     public function showAllCart(){
 
         $user = auth()->user();
 
-        $CartList = Cart::where("UserId","=",$user->id)->get();
+        $CartList = Cart::where("user_id","=",$user->id)->get();
 
-        return view('showcart',['list' => $CartList]);
+        return view('member.viewCart',['list' => $CartList]);
         
 
     }
@@ -90,27 +90,25 @@ class CartController extends Controller
         // echo json_encode($headertransaction);
         // die();
 
-        $CartList = Cart::where("UserId","=",$user->id)->get();
+        $CartList = Cart::where("user_id","=",$user->id)->get();
         
         foreach($CartList as $cart){
 
             DetailTransaction :: create([
                 'TransactionId' => ($headertransaction->id),
-                'PizzaId' => ($cart->PizzaId),
-                'Quantity' => ($cart->Quantity)
+                'PizzaId' => ($cart->pizza_id),
+                'Quantity' => ($cart->quantity)
             ]);
 
         }
 
-        Cart::where("UserId","=",$user->id)->delete();
+        Cart::where("user_id","=",$user->id)->delete();
 
         Alert::success('Cart checkout Success', 'Cart successfully transfered to transaction');
         
         return redirect()->route('home');
 
     }
-
-
 
 
 }

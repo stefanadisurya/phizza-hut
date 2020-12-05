@@ -3,8 +3,8 @@
 @section('title', 'showcart — Phizza Hut')
 
 @section('content')
-{{-- 
-@if(auth()->user()->role=="admin" || auth()->user()->role=="member" ) --}}
+
+@if(auth()->user()->role=="admin" || auth()->user()->role=="member" )
 
 @foreach ($detailtransactionlist as $transaction)
 
@@ -30,6 +30,6 @@
 
 @endforeach
 
-{{-- @endif --}}
+@endif
 
 @endsection

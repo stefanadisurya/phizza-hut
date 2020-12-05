@@ -15,7 +15,7 @@ class TransactionController extends Controller
 
         $transaction = HeaderTransaction::where("UserId","=",$user->id)->get();
 
-        return view('showusertransaction',['transactionlist' => $transaction]);
+        return view('member.showusertransaction',['transactionlist' => $transaction]);
 
     }
 
@@ -23,7 +23,7 @@ class TransactionController extends Controller
 
         $transaction = HeaderTransaction::all();
 
-        return view('showalltransaction',['transactionlist' => $transaction]);
+        return view('admin.showalltransaction',['transactionlist' => $transaction]);
 
     }
 

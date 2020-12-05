@@ -44,34 +44,55 @@
             </div>
 
         @elseif(auth()->user()->role=="member")
-        <div class="row">
-            <div class="col-md-2 my-2">
-                <p class="text-dark h5">Search Pizza: </p>
-            </div>
-
-            <div class="col-md-6">
-                <input class="form-control mr-sm-2" type="search" aria-label="Search">
-            </div>
-
-            <div class="col-md-2">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-            </div>
-        </div>
-
-        <div class="row justify-content-start">
-            @foreach ($pizzas as $pizza)
-                <div class="col-md-4 my-3">
-                    <div class="card" style="width: 20rem;">
-                        <a href="/pizza/{{$pizza->id}}">
-                            <img src="{{ asset('assets/image/' . $pizza->image) }}" style="height:250px" class="card-img-top">
-                            <div class="card-body">
-                            <h5 class="card-title font-weight-bold text-dark">{{ $pizza->name }}</h5>
-                        </a>
-                                <p class="card-text">Rp. {{ $pizza->price }}</p>
-                            </div>
-                    </div>
+            <div class="row">
+                <div class="col-md-2 my-2">
+                    <p class="text-dark h5">Search Pizza: </p>
                 </div>
-            @endforeach
+
+                <div class="col-md-6">
+                    <input class="form-control mr-sm-2" type="search" aria-label="Search">
+                </div>
+
+                <div class="col-md-2">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                </div>
+            </div>
+
+            <div class="row justify-content-start">
+                @foreach ($pizzas as $pizza)
+                    <div class="col-md-4 my-3">
+                        <div class="card" style="width: 20rem;">
+                            <a href="/pizza/{{$pizza->id}}">
+                                <img src="{{ asset('assets/image/' . $pizza->image) }}" style="height:250px" class="card-img-top">
+                                <div class="card-body">
+                                <h5 class="card-title font-weight-bold text-dark">{{ $pizza->name }}</h5>
+                            </a>
+                                    <p class="card-text">Rp. {{ $pizza->price }}</p>
+                                </div>
+                        </div>
+                    </div>
+                @endforeach
+
+                <div class="container d-flex justify-content-center my-3">
+                    {{ $pizzas->links() }}
+                </div>
+
+        @else
+            <div class="row justify-content-start">
+                @foreach ($pizzas as $pizza)
+                    <div class="col-md-4 my-3">
+                        <div class="card" style="width: 20rem;">
+                            <a href="/{{ $pizza->id }}">
+                                <img src="{{ asset('assets/image/' . $pizza->image) }}" style="height:250px" class="card-img-top">
+                                <div class="card-body">
+                                <h5 class="card-title font-weight-bold text-dark">{{ $pizza->name }}</h5>
+                            </a>
+                                    <p class="card-text">Rp. {{ $pizza->price }}</p>
+                                </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
             <div class="container d-flex justify-content-center my-3">
                 {{ $pizzas->links() }}

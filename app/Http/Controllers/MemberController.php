@@ -7,9 +7,8 @@ use App\Pizza;
 
 class MemberController extends Controller
 {
-    public function show(Pizza $pizza){
-        // echo json_encode($pizza);
-        // die();
-        return view('PizzaDetailInfo', ['pizza' => $pizza]);
+    public function show(Pizza $pizza)
+    {
+        return view('show', ['pizza' => $pizza]);
     }
 }

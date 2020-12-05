@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class HeaderTransaction extends Model
 {
-    protected $table = 'headertransaction';
+    protected $table = 'headertransactions';
 
     protected $fillable = ['id','UserId'];
 
-    public function DetailTransaction(){
+    public function DetailTransactions(){
         return $this->hasMany(DetailTransaction::class);
     }
 
