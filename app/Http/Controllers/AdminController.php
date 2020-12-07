@@ -26,7 +26,7 @@ class AdminController extends Controller
             'name' => 'required|max:20',
             'price' => 'required|numeric|min:10000',
             'description' => 'required|min:20',
-            'image' => 'required',
+            'image' => 'required|mimes:jpeg,jpg,png',
         ]);
 
         $filename = $request->image->getClientOriginalName();
@@ -55,7 +55,7 @@ class AdminController extends Controller
             'name' => 'required|max:20',
             'price' => 'required|numeric|min:10000',
             'description' => 'required|min:20',
-            'image' => 'required',
+            'image' => 'required|mimes:jpeg,jpg,png',
         ]);
 
         $filename = $request->image->getClientOriginalName();
