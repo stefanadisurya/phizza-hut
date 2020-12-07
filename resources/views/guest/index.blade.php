@@ -9,8 +9,24 @@
     <div class="container my-2">
         <p class="h2 text-muted">order it now!</p>
 
+        <form method="GET" action=" {{ route('root') }}">
+            <div class="row">
+                <div class="col-md-2 my-2">
+                    <p class="text-dark h5">Search Pizza: </p>
+                </div>
+
+                <div class="col-md-6">
+                    <input class="form-control mr-sm-2" type="search" name="search" aria-label="Search">
+                </div>
+
+                <div class="col-md-2">
+                    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+
         <div class="row justify-content-start">
-            @foreach ($pizzas as $pizza)
+            @forelse ($pizzas as $pizza)
                 <div class="col-md-4 my-3">
                     <div class="card" style="width: 20rem;">
                         <a href="/{{ $pizza->id }}">
@@ -22,7 +38,12 @@
                             </div>
                     </div>
                 </div>
-            @endforeach
+
+                @empty
+                    <div class="d-flex justify-content-center my-5">
+                        <p class="h4 text-muted">No item in the store</p>
+                    </div>
+            @endforelse
         </div>
 
         <div class="container d-flex justify-content-center my-3">

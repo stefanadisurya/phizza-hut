@@ -22,9 +22,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $pizzas = Pizza::paginate(6);
+        $search = $request->get('search');
+        $pizzas = Pizza::where("name", 'like', '%' . $search . '%')
+            ->orWhere("price", 'like', '%' . $search . '%')
+            ->paginate(6);
         return view('home', ['pizzas' => $pizzas]);
     }
 }

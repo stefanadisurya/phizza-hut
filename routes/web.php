@@ -15,14 +15,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['middleware' => ['auth', 'roles:admin,member']], function () {
+    Route::get('/pizza/{pizza}', 'PagesController@show')->name('show');
+});
 
 Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/add', 'AdminController@addPizza')->name('add');
@@ -32,22 +31,23 @@ Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/delete/{pizza}', 'AdminController@deletePizza')->name('delete');
     Route::get('/getUser', 'AdminController@getUser')->name('getUser');
     Route::delete('/delete/{pizza}', 'AdminController@destroy');
-    Route::get('/alltransactionlist','TransactionController@showall')->name('showalltransaction');
-    Route::get('/detailtransactionlistforadmin/{Htrans}','TransactionController@showdetailtransaction')->name('showdetailtransactionforadmin');
+    Route::get('/allTransactionList', 'TransactionController@showall')->name('showalltransaction');
+    Route::get('/admin/detailTransactionList/{Htrans}', 'TransactionController@showdetailtransaction')->name('showdetailtransactionforadmin');
 });
 
-Route::group(['middleware' => ['auth','roles:member']], function(){
-    Route::get('/pizza/{pizza}', 'PagesController@show')->name('show');
+Route::group(['middleware' => ['auth', 'roles:member']], function () {
     Route::post('/pizza/{pizza}', 'CartController@storeToCart');
-    Route::get('/cartlist','CartController@showAllCart')->name('showcart');
-    Route::post('/cartlist/update/{item}','CartController@updateQuantity')->name('updatequantity');
-    Route::delete('/cartlist/delete/{item}','CartController@deleteItemFromCart')->name('delete');
-    Route::post('/cartlist','CartController@checkout')->name('checkout');
-    Route::get('/transactionlist','TransactionController@show')->name('showtransaction');
-    Route::get('/detailtransactionlist/{Htrans}','TransactionController@showdetailtransaction')->name('showdetailtransaction');
+    Route::get('/cartList', 'CartController@showAllCart')->name('showcart');
+    Route::post('/cartList/update/{item}', 'CartController@updateQuantity')->name('updatequantity');
+    Route::delete('/cartList/delete/{item}', 'CartController@deleteItemFromCart')->name('delete');
+    Route::post('/cartList', 'CartController@checkout')->name('checkout');
+    Route::get('/transactionList', 'TransactionController@show')->name('showtransaction');
+    Route::get('/detailTransactionList/{Htrans}', 'TransactionController@showdetailtransaction')->name('showdetailtransaction');
 });
-
-
 
 Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
 Route::get('/{pizza}', 'PagesController@showPizza')->name('showPizza')->middleware('guest');
+
+Route::get('/notFound', function () {
+    return view('error');
+});

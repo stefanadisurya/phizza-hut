@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 'role' => 'member',
                 'email' => 'stefan@gmail.com',
                 'password' => bcrypt('123456'),
-                'address' => 'Jalan Anggrek Cakra, no. 1',
+                'address' => 'Jalan Anggrek, no. 1',
                 'phoneNumber' => '081725192242',
                 'gender' => 'Male',
                 'remember_token' => Str::random(50)
