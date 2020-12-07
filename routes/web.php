@@ -48,6 +48,6 @@ Route::group(['middleware' => ['auth', 'roles:member']], function () {
 Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
 Route::get('/{pizza}', 'PagesController@showPizza')->name('showPizza')->middleware('guest');
 
-Route::get('/notFound', function () {
-    return view('error');
+Route::get('/error', function () {
+    return view('errors.404');
 });
