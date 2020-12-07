@@ -19,10 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Di dalam route group ini terdapat list-list route yang ada apabila user yang login adalah admin atau member
 Route::group(['middleware' => ['auth', 'roles:admin,member']], function () {
     Route::get('/pizza/{pizza}', 'PagesController@show')->name('show');
 });
 
+//Di dalam route group ini terdapat list-list route yang ada apabila user yang login adalah admin
 Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/add', 'AdminController@addPizza')->name('add');
     Route::post('/add', 'AdminController@store');
@@ -35,6 +37,7 @@ Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/admin/detailTransactionList/{Htrans}', 'TransactionController@showdetailtransaction')->name('showdetailtransactionforadmin');
 });
 
+//Di dalam route group ini terdapat list-list route yang ada apabila user yang login adalah member
 Route::group(['middleware' => ['auth', 'roles:member']], function () {
     Route::post('/pizza/{pizza}', 'CartController@storeToCart');
     Route::get('/cartList', 'CartController@showAllCart')->name('showcart');
@@ -48,6 +51,7 @@ Route::group(['middleware' => ['auth', 'roles:member']], function () {
 Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
 Route::get('/{pizza}', 'PagesController@showPizza')->name('showPizza')->middleware('guest');
 
+//route ini akan digunakan apabila url yang digunakan tidak ada di dalam list
 Route::get('/notFound', function () {
     return view('error');
 });
