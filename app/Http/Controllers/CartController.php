@@ -102,6 +102,10 @@ class CartController extends Controller
 
         }
 
+        // Cart::where('id','=',$item->id)->update([
+        //     'Quantity' => (($cart->quantity) + ($request->quantity))
+        // ]);
+
         Cart::where("user_id","=",$user->id)->delete();
 
         Alert::success('Cart checkout Success', 'Cart successfully transfered to transaction');

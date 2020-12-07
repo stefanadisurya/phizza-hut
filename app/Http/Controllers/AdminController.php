@@ -67,6 +67,8 @@ class AdminController extends Controller
             'image' => $filename
         ]);
 
+       
+
         $request->image->storeAs('image', $filename, 'public');
         Alert::success('Edit Pizza Success!', 'Pizza updated');
 
