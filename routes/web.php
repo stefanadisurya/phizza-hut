@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth', 'roles:member']], function () {
 Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
 Route::get('/{pizza}', 'PagesController@showPizza')->name('showPizza')->middleware('guest');
 
-//route ini akan digunakan apabila url yang digunakan tidak ada di dalam list
-Route::get('/notFound', function () {
-    return view('error');
+//Route ini akan digunakkan apabila url yang digunakan tidak ada dalam list-list route dalam web.php ini
+Route::get('/error', function () {
+    return view('errors.404');
 });
