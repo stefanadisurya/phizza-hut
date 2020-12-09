@@ -1,4 +1,6 @@
-<!doctype html>
+{{-- HALAMAN INI TIDAK DIGUNAKAN. DIBUAT OTOMATIS MENGGUNAKAN LARAVEL AUTH. --}}
+
+{{-- <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -77,4 +79,4 @@
         </main>
     </div>
 </body>
-</html>
+</html> --}}

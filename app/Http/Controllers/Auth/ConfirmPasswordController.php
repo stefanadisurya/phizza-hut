@@ -13,25 +13,30 @@ class ConfirmPasswordController extends Controller
     | Confirm Password Controller
     |--------------------------------------------------------------------------
     |
-    | This controller is responsible for handling password confirmations and
-    | uses a simple trait to include the behavior. You're free to explore
-    | this trait and override any functions that require customization.
+    | Controller ini digunakan untuk mengatur konfirmasi password, dan dibuat
+    | menggunakan Laravel Auth.
     |
+    | Made by @stefanadisurya & @ChristopherIrvine
     */
 
     use ConfirmsPasswords;
 
     /**
-     * Where to redirect users when the intended url fails.
-     *
-     * @var string
+     * Berfungsi untuk me-redirect user menuju homepage ketika
+     * setelah berhasil melakukan konfirmasi password.
+     * Dibuat otomatis oleh Laravel Auth.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Function ini digunakan untuk memberikan middleware,
+     * sehingga yang dapat mengakses halaman ini hanya
+     * user dengan role 'admin' dan 'member'. Dibuat
+     * otomatis oleh Laravel Auth.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function __construct()
     {

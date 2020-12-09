@@ -1,3 +1,4 @@
+{{-- Template blade yang digunakan pada setiap halaman --}}
 <!doctype html>
 <html lang="en">
   <head>

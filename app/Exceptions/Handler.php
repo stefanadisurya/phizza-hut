@@ -51,15 +51,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        /**
+         * Jika halaman yang diakses tidak ada, maka akan
+         * me-redirect user ke halaman error.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         if ($exception instanceof NotFoundHttpException) {
             return redirect('/error');
         }
-
-        // if ($this->isHttpException($exception)) {
-        //     if ($exception->getStatusCode() == 404) {
-        //         return response()->view('error', [], 404);
-        //     }
-        // }
 
         return parent::render($request, $exception);
     }

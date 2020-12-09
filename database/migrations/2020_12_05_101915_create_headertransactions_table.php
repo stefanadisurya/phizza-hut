@@ -13,6 +13,11 @@ class CreateHeadertransactionsTable extends Migration
      */
     public function up()
     {
+        /**
+         * Membuat table 'headerTransactions' pada database.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         Schema::create('headertransactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('UserId');

@@ -13,6 +13,11 @@ class CreateFailedJobsTable extends Migration
      */
     public function up()
     {
+        /**
+         * Membuat table 'failed_jobs' pada database.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         Schema::create('failed_jobs', function (Blueprint $table) {
             $table->id();
             $table->text('connection');

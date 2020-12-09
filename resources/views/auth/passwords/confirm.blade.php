@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman Confirm Password --}}
 @extends('layouts.master')
 
 @section('title', 'Confirm Password — Phizza Hut')
@@ -20,7 +21,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                {{-- Pesan error untuk password --}}
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman Register --}}
 @extends('layouts.master')
 
 @section('title', 'Register — Phizza Hut')
@@ -10,6 +11,7 @@
                 <div class="card-header bg-danger text-white">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    {{-- Form untuk register --}}
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -18,7 +20,7 @@
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
+                                {{-- Pesan error untuk username --}}
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -27,6 +29,7 @@
                             </div>
                         </div>
 
+                        {{-- Hidden input agar user yang mendaftar lewat halaman ini, otomatis terdaftar dengan role 'member' --}}
                         <input type="hidden" name="role" value="member">
 
                         <div class="form-group row">
@@ -34,7 +37,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
+                                {{-- Pesan error untuk email --}}
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -48,7 +51,7 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                {{-- Pesan error untuk password --}}
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -70,7 +73,7 @@
 
                             <div class="col-md-6">
                                 <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
-
+                                {{-- Pesan error untuk address --}}
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -84,7 +87,7 @@
 
                             <div class="col-md-6">
                                 <input id="phoneNumber" type="text" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ old('phoneNumber') }}" required autocomplete="phoneNumber">
-
+                                {{-- Pesan error untuk phoneNumber --}}
                                 @error('phoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

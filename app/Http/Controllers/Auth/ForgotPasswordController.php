@@ -9,13 +9,13 @@ class ForgotPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Controller
+    | Forgot Password Controller
     |--------------------------------------------------------------------------
     |
-    | This controller is responsible for handling password reset emails and
-    | includes a trait which assists in sending these notifications from
-    | your application to your users. Feel free to explore this trait.
+    | Controller ini berfungsi untuk mengatur manajemen reset password melalui
+    | email, dan dibuat menggunakan Laravel Auth.
     |
+    | Made by @stefanadisurya & @ChristopherIrvine
     */
 
     use SendsPasswordResetEmails;

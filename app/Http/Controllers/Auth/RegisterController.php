@@ -16,25 +16,34 @@ class RegisterController extends Controller
     | Register Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | Controller ini digunakan untuk mengurus registrasi user baru. User
+    | yang melakukan registrasi lewat halaman Register, akan memiliki
+    | role 'Member'. Jika ingin menambahkan user denga role 'Admin',
+    | maka harus ditambahkan melalui seeder, tinker, ataupun secara
+    | manual pada database (dalam hal ini, phpMyAdmin). Controller
+    | ini menggunakan model User, dan dibuat menggunakan Laravel
+    | Auth.
     |
+    | Made by @stefanadisurya & @ChristopherIrvine
     */
 
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
+     * Berfungsi untuk me-redirect user menuju homepage ketika
+     * telah berhasil melakukan register. Dibuat otomatis
+     * oleh Laravel Auth.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Function ini digunakan untuk memberikan middleware pada halaman Register,
+     * sehingga yang dapat mengakses halaman ini hanya guest. Dibuat
+     * otomatis oleh Laravel Auth.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function __construct()
     {
@@ -42,10 +51,12 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * Function ini digunakan untuk melakukan validasi pada form Register.
+     * Jika ada data yang tidak sesuai, maka akan dikeluarkan sebuah
+     * warning pada form. Dibuat otomatis oleh Laravel Auth, dan
+     * dimodifikasi sesuai kebutuhan.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected function validator(array $data)
     {
@@ -60,10 +71,13 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \App\User
+     * Function ini digunakan untuk mendaftarkan user baru, dan menyimpannya
+     * ke dalam database. Data didapat dari form yang diisi oleh user
+     * pada halaman Register. Clause yang digunakan adalah
+     * User::create(...). Dibuat otomatis oleh Laravel Auth, dan
+     * dimodifikasi sesuai kebutuhan.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected function create(array $data)
     {

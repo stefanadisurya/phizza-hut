@@ -10,21 +10,23 @@ class ResetPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Controller
+    | Reset Password Controller
     |--------------------------------------------------------------------------
     |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
+    | Controller ini berfungsi untuk mengatur permintaan reset password,
+    | dan dibuat menggunakan Laravel Auth.
     |
+    | Made by @stefanadisurya & @ChristopherIrvine
     */
 
     use ResetsPasswords;
 
     /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
+     * Berfungsi untuk me-redirect user menuju homepage ketika
+     * setelah berhasil melakukan reset password.
+     * Dibuat otomatis oleh Laravel Auth.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 }

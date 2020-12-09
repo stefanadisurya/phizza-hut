@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman View Pizza Details untuk Admin dan Member --}}
 @extends('layouts.master')
 
 @section('title', 'View Pizza Details — Phizza Hut')
@@ -6,6 +7,8 @@
 <div class="container my-5">
     <div class="row justify-content-start">
         <div class="col-md-12 my-3">
+
+            {{-- Jika admin yang mengakses halaman --}}
             @if(auth()->user()->role=="admin")
             <div class="card border-light mt-5 mb-3">
                 <div class="row showcase-left">
@@ -22,6 +25,7 @@
                 </div>
             </div>
 
+            {{-- Jika member yang mengakses halaman --}}
             @elseif(auth()->user()->role=="member")
             <div class="card border-light mt-0 mb-3">
                 <div class="row showcase-left">
@@ -35,6 +39,7 @@
                         <br><br>
                         <p>Rp. {{ $pizza->price }}</p>
                         <br><br>
+                        {{-- Form untuk memasukkan quantity pizza yang akan dipesan --}}
                         <form method="POST" action="{{ route('show', $pizza) }}">
                             @csrf
                             <div class="form-group row">
@@ -44,6 +49,7 @@
                                 
                                 <div class="col-md-6">
                                     <input id="quantity" type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required autocomplete="quantity" autofocus>
+                                    {{-- Pesan error untuk quantity --}}
                                     @error('quantity')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

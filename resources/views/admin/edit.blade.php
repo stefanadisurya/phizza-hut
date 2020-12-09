@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman Edit Pizza --}}
 @extends('layouts.master')
 
 @section('title', 'Edit Pizza — Phizza Hut')
@@ -14,7 +15,7 @@
                     
                     <div class="col-lg-6 mx-5 my-3">
                         <h1 class="text-dark mb-4">Edit Pizza Details</h1>
-    
+                        {{-- Form untuk edit pizza --}}
                         <form method="POST" action="/edit/{{ $pizza->id }}" enctype="multipart/form-data">
                             @csrf
     
@@ -23,7 +24,7 @@
     
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $pizza->name }}" required autocomplete="name" autofocus>
-    
+                                    {{-- Pesan error untuk name --}}
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -37,7 +38,7 @@
     
                                 <div class="col-md-6">
                                     <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $pizza->price }}" required autocomplete="price">
-    
+                                    {{-- Pesan error untuk price --}}
                                     @error('price')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -51,7 +52,7 @@
     
                                 <div class="col-md-6">
                                     <input id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $pizza->description }}" required autocomplete="description">
-    
+                                    {{-- Pesan error untuk description --}}
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -65,7 +66,7 @@
     
                                 <div class="col-md-6">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror" name="image" id="image" required>
-    
+                                    {{-- Pesan error untuk image --}}
                                     @error('image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -10,28 +10,36 @@ class VerificationController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Email Verification Controller
+    | Verification Controller
     |--------------------------------------------------------------------------
     |
-    | This controller is responsible for handling email verification for any
-    | user that recently registered with the application. Emails may also
-    | be re-sent if the user didn't receive the original email message.
+    | Controller ini digunakan untuk mengatur verifikasi email untuk user
+    | yang melakukan registrasi. Fitur ini tidak digunakan pada project,
+    | sehingga controller ini tidak digunakan. Dibuat menggunakan
+    | Laravel Auth.
     |
+    | Made by @stefanadisurya & @ChristopherIrvine
     */
 
     use VerifiesEmails;
 
     /**
-     * Where to redirect users after verification.
-     *
-     * @var string
+     * Berfungsi untuk me-redirect user menuju homepage ketika
+     * setelah berhasil melakukan verifikasi. Dibuat otomatis
+     * oleh Laravel Auth.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Function ini berfungsi untuk membuat instance controller baru,
+     * memberikan middleware agar hanya user yang belum terdaftar
+     * yang dapat menggunakan fitur ini. Dalam function ini
+     * juga diatur mekanisme verifikasi, dan resend
+     * verifikasi jika user tidak menerimanya.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function __construct()
     {

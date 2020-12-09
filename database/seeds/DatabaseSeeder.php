@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * Daftar seeder yang dapat dijalankan menggunakan perintah
+         * php artisan db:seed
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         $this->call(UserSeeder::class);
         $this->call(PizzaSeeder::class);
     }

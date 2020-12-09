@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman View Pizza Details untuk Guest --}}
 @extends('layouts.master')
 
 @section('title', 'View Pizza Details — Phizza Hut')

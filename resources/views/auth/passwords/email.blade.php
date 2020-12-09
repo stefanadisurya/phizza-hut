@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman Forgot Password --}}
 @extends('layouts.master')
 
 @section('title', 'Forgot Password — Phizza Hut')
@@ -24,7 +25,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                                {{-- Pesan error untuk email --}}
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

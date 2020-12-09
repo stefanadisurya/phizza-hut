@@ -12,6 +12,11 @@ class PizzaSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * Membuat seeder untuk table 'pizzas'.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         DB::table('pizzas')->insert([
             [
                 'name' => 'Cheese Bomb',

@@ -1,3 +1,4 @@
+{{-- Menampilkan Homepage untuk Admin dan Member --}}
 @extends('layouts.master')
 
 @section('title', 'Home — Phizza Hut')
@@ -9,12 +10,14 @@
     <div class="container my-2">
         <p class="h2 text-muted">order it now!</p>
 
+        {{-- Jika admin yang mengakses halaman --}}
         @if(auth()->user()->role=="admin")
             <a href="{{ route('add') }}">
                 <button class="btn btn-dark text-white mb-4">Add Pizza</button>
             </a>
 
             <div class="row justify-content-start">
+                {{-- Menggunakan @forelse agar dapat melakukan validasi jika tidak ada data (@empty) --}}
                 @forelse ($pizzas as $pizza)
                     <div class="col-md-4 my-3">
                         <div class="card" style="width: 20rem;">
@@ -43,13 +46,15 @@
                         </div>
                 @endforelse
 
+                {{-- Pagination --}}
                 <div class="container d-flex justify-content-center my-3">
                     {{ $pizzas->links() }}
                 </div>
             </div>
 
+        {{-- Jika member yang mengakses halaman --}}
         @elseif(auth()->user()->role=="member")
-            
+            {{-- Form untuk search pizza --}}
                 <form method="GET" action=" {{ route('home') }}">
                     <div class="row">
                         <div class="col-md-2 my-2">
@@ -67,6 +72,7 @@
                 </form>
 
             <div class="row justify-content-start">
+                {{-- Menggunakan @forelse agar dapat melakukan validasi jika tidak ada data (@empty) --}}
                 @forelse ($pizzas as $pizza)
                     <div class="col-md-4 my-3">
                         <div class="card" style="width: 20rem;">
@@ -86,34 +92,10 @@
                         </div>
                 @endforelse
 
+                {{-- Pagination --}}
                 <div class="container d-flex justify-content-center my-3">
                     {{ $pizzas->links() }}
                 </div>
-
-        @else
-            <div class="row justify-content-start">
-                @forelse ($pizzas as $pizza)
-                    <div class="col-md-4 my-3">
-                        <div class="card" style="width: 20rem;">
-                            <a href="/{{ $pizza->id }}">
-                                <img src="{{ asset('assets/image/' . $pizza->image) }}" style="height:250px" class="card-img-top">
-                                <div class="card-body">
-                                <h5 class="card-title font-weight-bold text-dark">{{ $pizza->name }}</h5>
-                            </a>
-                                    <p class="card-text">Rp. {{ $pizza->price }}</p>
-                                </div>
-                        </div>
-                    </div>
-
-                    @empty
-                        <div class="d-flex justify-content-center my-5">
-                            <p class="h4 text-muted">No item in store</p>
-                        </div>
-                @endforelse
-            </div>
-
-            <div class="container d-flex justify-content-center my-3">
-                {{ $pizzas->links() }}
             </div>
         @endif
     </div>

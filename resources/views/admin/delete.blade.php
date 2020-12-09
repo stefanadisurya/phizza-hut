@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman Delete Pizza --}}
 @extends('layouts.master')
 
 @section('title', 'Delete Pizza — Phizza Hut')
@@ -18,6 +19,7 @@
                             <br><br>
                             <p>Rp. {{ $pizza->price }}</p>
                             <br><br>
+                            {{-- Form untuk menghapus pizza --}}
                             <form action="{{ $pizza->id }}" method="POST">
                                 @method('delete')
                                 @csrf

@@ -13,6 +13,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        /**
+         * Membuat table 'users' pada database.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         Schema::create('users', function (Blueprint $table) {
             $table->id('id');
             $table->string('username');

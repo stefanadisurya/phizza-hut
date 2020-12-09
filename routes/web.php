@@ -9,22 +9,31 @@ use Illuminate\Support\Facades\Auth;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Tempat untuk meregistrasi web routes pada aplikasi.
+| Route-route ini di-load oleh RouteServiceProvider
+| dalam sebuah group yang mengandung group "web"
+| middleware.
 |
+| Made by @stefanadisurya & @ChristopherIrvine
 */
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-//Di dalam route group ini terdapat list-list route yang ada apabila user yang login adalah admin atau member
+/**
+ * Daftar route yang bisa diakses bersama oleh user dengan role 'admin' dan 'member'.
+ * 
+ * Made by @stefanadisurya & @ChristopherIrvine
+ */
 Route::group(['middleware' => ['auth', 'roles:admin,member']], function () {
-    Route::get('/pizza/{pizza}', 'PagesController@show')->name('show');
+    Route::get('/home', 'UserController@index')->name('home');
+    Route::get('/pizza/{pizza}', 'UserController@show')->name('show');
 });
 
-//Di dalam route group ini terdapat list-list route yang ada apabila user yang login adalah admin
+/**
+ * Daftar route yang hanya dapat diakses oleh user dengan role 'admin'.
+ * 
+ * Made by @stefanadisurya & @ChristopherIrvine
+ */
 Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/add', 'AdminController@addPizza')->name('add');
     Route::post('/add', 'AdminController@store');
@@ -37,7 +46,11 @@ Route::group(['middleware' => ['auth', 'roles:admin']], function () {
     Route::get('/admin/detailTransactionList/{Htrans}', 'TransactionController@showdetailtransaction')->name('showdetailtransactionforadmin');
 });
 
-//Di dalam route group ini terdapat list-list route yang ada apabila user yang login adalah member
+/**
+ * Daftar route yang hanya dapat diakses oleh user dengan role 'member'.
+ * 
+ * Made by @stefanadisurya & @ChristopherIrvine
+ */
 Route::group(['middleware' => ['auth', 'roles:member']], function () {
     Route::post('/pizza/{pizza}', 'CartController@storeToCart');
     Route::get('/cartList', 'CartController@showAllCart')->name('showcart');
@@ -48,10 +61,19 @@ Route::group(['middleware' => ['auth', 'roles:member']], function () {
     Route::get('/detailTransactionList/{Htrans}', 'TransactionController@showdetailtransaction')->name('showdetailtransaction');
 });
 
-Route::get('/', 'PagesController@index')->name('root')->middleware('guest');
-Route::get('/{pizza}', 'PagesController@showPizza')->name('showPizza')->middleware('guest');
+/**
+ * Route yang hanya dapat diakses oleh guest.
+ * 
+ * Made by @stefanadisurya & @ChristopherIrvine
+ */
+Route::get('/', 'GuestController@index')->name('root')->middleware('guest');
+Route::get('/{pizza}', 'GuestController@showPizza')->name('showPizza')->middleware('guest');
 
-//Route ini akan digunakkan apabila url yang digunakan tidak ada dalam list-list route dalam web.php ini
+/**
+ * Route yang digunakan jika URL tidak ditemukan (tidak ada dalam daftar route di web.php).
+ * 
+ * Made by @stefanadisurya & @ChristopherIrvine
+ */
 Route::get('/error', function () {
     return view('errors.404');
 });

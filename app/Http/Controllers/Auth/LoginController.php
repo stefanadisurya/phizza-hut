@@ -13,25 +13,29 @@ class LoginController extends Controller
     | Login Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
+    | Controller ini berfungsi untuk mengautentikasi user, dan dibuat
+    | menggunakan Laravel Auth.
     |
+    | Made by @stefanadisurya & @ChristopherIrvine
     */
 
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * Berfungsi untuk me-redirect user menuju homepage ketika
+     * setelah berhasil melakukan login. Dibuat otomatis
+     * oleh Laravel Auth.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Function ini digunakan untuk memberikan middleware pada halaman Login,
+     * sehingga yang dapat mengakses halaman ini hanya guest. Dibuat
+     * otomatis oleh Laravel Auth.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function __construct()
     {

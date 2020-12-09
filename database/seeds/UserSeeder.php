@@ -13,6 +13,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * Membuat seeder untuk table 'users'.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         DB::table('users')->insert([
             [
                 'username' => 'admin',

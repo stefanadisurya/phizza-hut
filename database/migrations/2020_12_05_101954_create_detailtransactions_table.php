@@ -13,6 +13,11 @@ class CreateDetailtransactionsTable extends Migration
      */
     public function up()
     {
+        /**
+         * Membuat table 'detailTransactions' pada database.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         Schema::create('detailtransactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('PizzaId');

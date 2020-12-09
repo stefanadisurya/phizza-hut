@@ -1,8 +1,11 @@
+{{-- Mengatur link dan pilihan menu header (navbar) --}}
 <div class="collapse navbar-collapse d-inline-block" id="navbarNav">
   <img src="{{ asset('/assets/image/pizza-logo.png') }}" alt="" height="60" width="60" style="margin-right:10px">
   @guest
+    {{-- Jika guest yang mengakses halaman --}}
     <a class="navbar-brand text-white" href=" {{ route('root') }}">PHizza Hut</a>
   @else
+    {{-- Jika admin dan member yang mengakses halaman --}}
     <a class="navbar-brand text-white" href=" {{ route('home') }}">PHizza Hut</a>
   @endguest
   
@@ -12,6 +15,7 @@
 
     <ul class="navbar-nav ml-auto">
       @guest
+          {{-- Jika guest yang mengakses halaman --}}
           <li class="nav-item">
               <a class="nav-link text-white js-scroll-trigger mr-3" href="{{ route('login') }}">{{ __('Login') }}</a>
           </li>
@@ -22,6 +26,7 @@
               </li>
           @endif
       @else
+          {{-- Jika admin yang mengakses halaman --}}
           @if(auth()->user()->role=="admin")
             <li class="nav-item">
             <a class="nav-link text-white js-scroll-trigger mr-3" href="{{ route('showalltransaction')}}">View All User Transaction</a>
@@ -49,6 +54,7 @@
                 </div>
             </li>
 
+          {{-- Jika guest yang mengakses halaman --}}
           @elseif(auth()->user()->role=="member")
             <li class="nav-item">
             <a class="nav-link text-white js-scroll-trigger mr-3" href="{{ route('showtransaction') }}">View Transaction History</a>

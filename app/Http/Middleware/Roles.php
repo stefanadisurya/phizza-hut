@@ -7,11 +7,10 @@ use Closure;
 class Roles
 {
     /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * Function ini berfungsi untuk mengatur request berupa
+     * validasi user.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function handle($request, Closure $next, ...$roles)
     {

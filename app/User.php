@@ -8,39 +8,61 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Model User
+    |--------------------------------------------------------------------------
+    |
+    | Model ini merupakan gambaran dari table 'users' pada database.
+    | Terdapat relationship hasMany kepada model
+    | 'HeaderTransaction' dan 'Cart'.
+    |
+    | Made by @stefanadisurya & @ChristopherIrvine
+    */
+
     use Notifiable;
 
-    public function HeaderTransactions(){
-        return $this->hasMany(HeaderTransaction::class);
-    }
-
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * Daftar atribut yang dapat diisi menggunakan mass assignment.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected $fillable = [
         'UserId', 'username', 'role', 'email', 'password', 'address', 'phoneNumber', 'gender'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     /**
+     * Daftar atribut yang disembunyikan untuk array.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * Daftar atribut yang harus diisi dengan tipe native.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Eloquent Relationship kepada model 'HeaderTransaction'.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
+     */
+    public function HeaderTransactions(){
+        return $this->hasMany(HeaderTransaction::class);
+    }
+
+    /**
+     * Eloquent Relationship kepada model 'Cart'.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
+     */
     public function carts()
     {
         return $this->hasMany(Cart::class);

@@ -13,6 +13,11 @@ class CreatePizzasTable extends Migration
      */
     public function up()
     {
+        /**
+         * Membuat table 'pizzas' pada database.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         Schema::create('pizzas', function (Blueprint $table) {
             $table->id('id');
             $table->string('name');

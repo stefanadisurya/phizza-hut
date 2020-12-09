@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman View All User --}}
 @extends('layouts.master')
 
 @section('title', 'View All User — Phizza Hut')
@@ -5,6 +6,7 @@
 @section('content')
     <div class="container my-5">
         <div class="row justify-content-start">
+            {{-- Menggunakan @forelse agar dapat melakukan validasi jika tidak ada data (@empty) --}}
             @forelse ($users as $user)
             <div class="col-md-3 my-3">
                 <div class="card">

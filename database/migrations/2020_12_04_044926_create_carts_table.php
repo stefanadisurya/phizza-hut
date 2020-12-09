@@ -13,6 +13,11 @@ class CreateCartsTable extends Migration
      */
     public function up()
     {
+        /**
+         * Membuat table 'carts' pada database.
+         * 
+         * Made by @stefanadisurya & @ChristopherIrvine
+         */
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity')->unsigned();

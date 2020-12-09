@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman View All User Transaction --}}
 @extends('layouts.master')
 
 @section('title', 'View All User Transaction — Phizza Hut')
@@ -11,6 +12,7 @@
     <table class="table table-bordered">
         <tbody>
             <?php $count = 1 ?>
+            {{-- Menggunakan @forelse agar dapat melakukan validasi jika tidak ada data (@empty) --}}
             @forelse ($transactionlist as $transaction)
                 @if ($count % 2 == 0)
                     <tr>
