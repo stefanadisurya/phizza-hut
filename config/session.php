@@ -33,6 +33,11 @@ return [
 
     'lifetime' => env('SESSION_LIFETIME', 120),
 
+    /**
+     * Mengatur agar cookie expired ketika halaman di-close.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
+     */
     'expire_on_close' => true,
 
     /*
