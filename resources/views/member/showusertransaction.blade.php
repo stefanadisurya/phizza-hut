@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman Transaction History  --}}
 @extends('layouts.master')
 
 @section('title', 'Transaction History — Phizza Hut')

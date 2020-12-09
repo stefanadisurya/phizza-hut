@@ -1,9 +1,11 @@
+{{-- Menampilkan halaman detail transaction --}}
 @extends('layouts.master')
 
 @section('title', 'Transaction Details — Phizza Hut')
 
 @section('content')
 
+{{-- Validasi apakah halaman ini diakses oleh user dengan role admin atau member --}}
 @if(auth()->user()->role=="admin" || auth()->user()->role=="member" )
 
 @forelse ($detailtransactionlist as $transaction)

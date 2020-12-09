@@ -1,3 +1,4 @@
+{{-- Menampilkan halaman View Cart --}}
 @extends('layouts.master')
 
 @section('title', 'View Cart — Phizza Hut')
@@ -28,6 +29,7 @@
                                             <label for="Quantity">Quantity : </label>
                                             <div class="col-md-6">
                                                 <input id="Quantity" type="text" class="form-control @error('Quantity') is-invalid @enderror" name="Quantity" value="{{ old('Quantity') }}" required autocomplete="Quantity" autofocus>
+                                                {{-- Pesan error untuk quantity --}}
                                                 @error('Quantity')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
