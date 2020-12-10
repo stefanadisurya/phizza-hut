@@ -9,7 +9,6 @@
 @if(auth()->user()->role=="admin" || auth()->user()->role=="member" )
 
 @forelse ($detailtransactionlist as $transaction)
-
     <div class="container my-5">
         <div class="row justify-content-start">
             <div class="col-md-12 my-0">

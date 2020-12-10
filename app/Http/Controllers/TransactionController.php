@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DetailTransaction;
 use App\HeaderTransaction;
+use App\Pizza;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -63,10 +64,10 @@ class TransactionController extends Controller
     *
     * Made by @stefanadisurya & @ChristopherIrvine
     */
-    function showdetailtransaction(HeaderTransaction $Htrans){
+    function showdetailtransaction(HeaderTransaction $Htrans) {
 
-        $detailtransaction = DetailTransaction::where("TransactionId","=",$Htrans->id)->get(); /* Mengambil data Detail Transaction dari table 'detailTransactions' yang memiliki headerTransactionID yang sesuai dengan Detail Transaction tersebut. Menggunakan model 'DetailTransaction' (Eloquent) untuk melakukannya.  */
-
+        $detailtransaction = DetailTransaction::withTrashed()->where("TransactionId","=",$Htrans->id)->get(); /* Mengambil data Detail Transaction dari table 'detailTransactions' yang memiliki headerTransactionID yang sesuai dengan Detail Transaction tersebut. Menggunakan model 'DetailTransaction' (Eloquent) untuk melakukannya.  */
+        
         return view('showdetailtransaction',['detailtransactionlist' => $detailtransaction]); /* Mengembalikan view showdetailtransaction, dan mem-passing data 'detailtransactionlist'. */
     }
 

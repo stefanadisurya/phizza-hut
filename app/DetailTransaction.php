@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DetailTransaction extends Model
 {
@@ -17,6 +18,8 @@ class DetailTransaction extends Model
     |
     | Made by @stefanadisurya & @ChristopherIrvine
     */
+
+    use SoftDeletes;
 
     /**
      * Nama table pada database.

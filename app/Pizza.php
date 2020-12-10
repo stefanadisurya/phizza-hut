@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pizza extends Model
 {
@@ -17,6 +18,8 @@ class Pizza extends Model
     |
     | Made by @stefanadisurya & @ChristopherIrvine
     */
+
+    use SoftDeletes;
     
     /**
      * Nama table pada database.
