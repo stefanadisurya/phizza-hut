@@ -67,7 +67,7 @@ Route::group(['middleware' => ['auth', 'roles:member']], function () {
  * Made by @stefanadisurya & @ChristopherIrvine
  */
 Route::get('/', 'GuestController@index')->name('root')->middleware('guest');
-Route::get('/{pizza}', 'GuestController@showPizza')->name('showPizza')->middleware('guest');
+Route::get('/{pizza}', 'GuestController@show')->name('showPizza')->middleware('guest');
 
 /**
  * Route yang digunakan jika URL tidak ditemukan (tidak ada dalam daftar route di web.php).

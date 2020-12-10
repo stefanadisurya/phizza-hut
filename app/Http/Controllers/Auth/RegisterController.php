@@ -61,12 +61,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'address' => ['required', 'min:5'],
-            'phoneNumber' => ['required', 'numeric', 'digits:6'],
-            'gender' => ['required']
+            'username' => ['required', 'string', 'max:255'], /* Tidak boleh kosong, harus diisi dengan string yang maksimum panjangnya 255 character. */
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], /* Tidak boleh kosong, harus diisi dengan string dalam format email, maksimum panjangnya 255 character, dan harus unik dalam table 'users'. */
+            'password' => ['required', 'string', 'min:6', 'confirmed'], /* Tidak boleh kosong, harus diisi dengan string yang minimum panjangnya 6 character, dan harus sama dengan kolom 'Confirm Password' pada form. */
+            'address' => ['required', 'min:5'], /* Tidak boleh kosong, harus diisi dengan minimum panjnagnya 5 chracter. */
+            'phoneNumber' => ['required', 'numeric', 'digits:6'], /* Tidak boleh kosong, harus diisi dengan angka yang minimum panjangnya 6 digit. */
+            'gender' => ['required'] /* Tidak boleh kosong. */
         ]);
     }
 
@@ -82,13 +82,13 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'username' => $data['username'],
-            'role' => $data['role'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'address' => $data['address'],
-            'phoneNumber' => $data['phoneNumber'],
-            'gender' => $data['gender']
+            'username' => $data['username'], /* Ambil data dari input 'username' pada form. */
+            'role' => $data['role'], /* Ambil data dari input (hidden) 'role' pada form */
+            'email' => $data['email'], /* Ambil data dari input 'email' pada form. */
+            'password' => bcrypt($data['password']), /* Ambil data dari input 'password' pada form. Data akan di-bcrypt agar menjaga privasi user pada database. */
+            'address' => $data['address'], /* Ambil data dari input 'address' pada form. */
+            'phoneNumber' => $data['phoneNumber'], /* Ambil data dari input 'phoneNumber' pada form. */
+            'gender' => $data['gender'] /* Ambil data dari input (radio) 'gender' pada form. */
         ]);
     }
 }

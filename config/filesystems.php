@@ -50,7 +50,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => ('assets/'),
+            'root' => ('assets/'), /* Menyimpan file yang di-upload pada folder public/assets/image. */
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],

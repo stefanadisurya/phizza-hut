@@ -32,19 +32,18 @@ class AdminController extends Controller
      */
     public function getUser()
     {
-        $users = User::all();
-        return view('admin.getUser', ['users' => $users]);
+        $users = User::all(); /* Mengambil data seluruh User dari table 'users'. Menggunakan model 'User' (Eloquent) untuk melakukannya. */
+        return view('admin.getUser', ['users' => $users]); /* Mengembalikan view admin.getUser, dan mem-passing data 'users'. */
     }
-
 
     /**
      * Function ini digunakan untuk menampilkan halaman Add Pizza.
      * 
-     * Made by @stefanadisurya
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function addPizza()
     {
-        return view('admin.add');
+        return view('admin.add'); /* Mengembalikan view admin.add. */
     }
 
     /**
@@ -57,30 +56,31 @@ class AdminController extends Controller
      * berhasil ditambahkan, dan admin akan
      * di-redirect menuju homepage.
      * 
-     * Made by @stefanadisurya
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function store(Request $request)
     {
+        /* Validasi form. */
         $this->validate($request, [
-            'name' => 'required|max:20',
-            'price' => 'required|numeric|min:10000',
-            'description' => 'required|min:20',
-            'image' => 'required|mimes:jpeg,jpg,png',
+            'name' => 'required|max:20', /* Tidak boleh kosong, dan maksimum diisi dengan 20 character. */
+            'price' => 'required|numeric|min:10000', /* Tidak boleh kosong, harus diisi dengan angka yang nominalnya minimum 10000 */
+            'description' => 'required|min:20', /* Tidak boleh kosong, dan minimum diisi dengan 20 character. */
+            'image' => 'required|mimes:jpeg,jpg,png', /* Tidak boleh kosong, dan format upload harus jpeg, jpg, atau png. */
         ]);
 
-        $filename = $request->image->getClientOriginalName();
+        $filename = $request->image->getClientOriginalName(); /* Mengambil nama file yang di-upload. */
 
         Pizza::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-            'image' => $filename
+            'name' => $request->name, /* Ambil data dari input 'name' pada form. */
+            'price' => $request->price, /* Ambil data dari input 'price' pada form. */
+            'description' => $request->description, /* Ambil data dari input 'description' pada form. */
+            'image' => $filename /* Ambil nama data dari input 'image' pada form. */
         ]);
 
-        $request->image->storeAs('image', $filename, 'public');
-        Alert::success('Add Pizza Success!', 'Pizza added');
+        $request->image->storeAs('image', $filename, 'public'); /* Menyimpan image yang sudah di-upload pada folder public/assets/image */
+        Alert::success('Add Pizza Success!', 'Pizza added'); /* Menampilkan pesan sukses menambahkan pizza baru. Dibuat dengan menggunakan SweetAlert. */
 
-        return redirect()->route('home');
+        return redirect()->route('home'); /* Me-redirect ke route yang mempunyai name('home'). */
     }
 
     /**
@@ -89,11 +89,11 @@ class AdminController extends Controller
      * yang akan digunakan pada blade untuk menampilkan
      * data pizza yang dipilih oleh admin.
      * 
-     * Made by @stefanadisurya
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function editPizza(Pizza $pizza)
     {
-        return view('admin.edit', ['pizza' => $pizza]);
+        return view('admin.edit', ['pizza' => $pizza]); /* Mengembalikan view admin.edit, dan mem-passing data 'pizza'. */
     }
 
     /**
@@ -105,30 +105,31 @@ class AdminController extends Controller
      * alert yang diberikan ketika berhasil
      * melakukan update pizza.
      * 
-     * Made by @stefanadisurya
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function update(Request $request, Pizza $pizza)
     {
+        /* Validasi form. */
         $request->validate([
-            'name' => 'required|max:20',
-            'price' => 'required|numeric|min:10000',
-            'description' => 'required|min:20',
-            'image' => 'required|mimes:jpeg,jpg,png',
+            'name' => 'required|max:20', /* Tidak boleh kosong, dan maksimum diisi dengan 20 character. */
+            'price' => 'required|numeric|min:10000', /* Tidak boleh kosong, harus diisi dengan angka yang nominalnya minimum 10000 */
+            'description' => 'required|min:20', /* Tidak boleh kosong, dan minimum diisi dengan 20 character. */
+            'image' => 'required|mimes:jpeg,jpg,png', /* Tidak boleh kosong, dan format upload harus jpeg, jpg, atau png. */
         ]);
 
-        $filename = $request->image->getClientOriginalName();
+        $filename = $request->image->getClientOriginalName(); /* Mengambil nama file yang di-upload. */
 
         Pizza::where('id', $pizza->id)->update([
-            'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-            'image' => $filename
+            'name' => $request->name, /* Ambil data dari input 'name' pada form. */
+            'price' => $request->price, /* Ambil data dari input 'price' pada form. */
+            'description' => $request->description, /* Ambil data dari input 'description' pada form. */
+            'image' => $filename /* Ambil nama data dari input 'image' pada form. */
         ]);
 
-        $request->image->storeAs('image', $filename, 'public');
-        Alert::success('Edit Pizza Success!', 'Pizza updated');
+        $request->image->storeAs('image', $filename, 'public'); /* Menyimpan image yang sudah di-upload pada folder public/assets/image */
+        Alert::success('Edit Pizza Success!', 'Pizza updated'); /* Menampilkan pesan sukses menambahkan pizza baru. Dibuat dengan menggunakan SweetAlert. */
 
-        return redirect()->route('home');
+        return redirect()->route('home'); /* Me-redirect ke route yang mempunyai name('home'). */
     }
 
     /**
@@ -137,11 +138,11 @@ class AdminController extends Controller
      * yang akan digunakan pada blade untuk menampilkan
      * data pizza yang dipilih oleh admin.
      * 
-     * Made by @stefanadisurya
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function deletePizza(Pizza $pizza)
     {
-        return view('admin.delete', ['pizza' => $pizza]);
+        return view('admin.delete', ['pizza' => $pizza]); /* Mengembalikan view admin.edit, dan mem-passing data 'pizza'. */
     }
 
     /**
@@ -152,13 +153,13 @@ class AdminController extends Controller
      * konfirmasi bahwa pizza berhasil
      * dihapus.
      * 
-     * Made by @stefanadisurya
+     * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function destroy(Pizza $pizza)
     {
-        Pizza::destroy($pizza->id);
-        Alert::success('Delete Success!', 'Pizza deleted');
+        Pizza::destroy($pizza->id); /* Menghapus pizza dari table 'pizzas'. Menggunakan model 'Pizza' (Eloquent) untuk melakukannya. */
+        Alert::success('Delete Success!', 'Pizza deleted'); /* Menampilkan pesan sukses menghapus pizza. Dibuat dengan menggunakan SweetAlert. */
 
-        return redirect()->route('home');
+        return redirect()->route('home'); /* Me-redirect ke route yang mempunyai name('home'). */
     }
 }
