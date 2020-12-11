@@ -12,7 +12,7 @@ class HeaderTransaction extends Model
     | Model HeaderTransaction
     |--------------------------------------------------------------------------
     |
-    | Model ini merupakan gambaran dari table 'headerTransactions' pada database.
+    | Model ini merupakan gambaran dari table 'headertransactions' pada database.
     | Terdapat relationship hasMany kepada model 'DetailTransaction' dan
     | belongsTo kepada model 'User'.
     |

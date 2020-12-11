@@ -19,6 +19,11 @@ class Pizza extends Model
     | Made by @stefanadisurya & @ChristopherIrvine
     */
 
+    /**
+     * Menggunakan SoftDeletes agar dapat menggunakan fitur soft delete yang disediakan Laravel.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
+     */
     use SoftDeletes;
     
     /**

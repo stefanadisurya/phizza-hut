@@ -14,7 +14,7 @@ class CreateHeadertransactionsTable extends Migration
     public function up()
     {
         /**
-         * Membuat table 'headerTransactions' pada database.
+         * Membuat table 'headertransactions' pada database.
          * 
          * Made by @stefanadisurya & @ChristopherIrvine
          */

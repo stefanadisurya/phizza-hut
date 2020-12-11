@@ -12,13 +12,18 @@ class DetailTransaction extends Model
     | Model DetailTransaction
     |--------------------------------------------------------------------------
     |
-    | Model ini merupakan gambaran dari table 'detailTransactions' pada database.
+    | Model ini merupakan gambaran dari table 'detailtransactions' pada database.
     | Terdapat relationship belongsTo kepada model 'Pizza' dan
     | 'HeaderTransaction'.
     |
     | Made by @stefanadisurya & @ChristopherIrvine
     */
 
+    /**
+     * Menggunakan SoftDeletes agar dapat menggunakan fitur soft delete yang disediakan Laravel.
+     * 
+     * Made by @stefanadisurya & @ChristopherIrvine
+     */
     use SoftDeletes;
 
     /**
@@ -41,7 +46,7 @@ class DetailTransaction extends Model
      * Made by @stefanadisurya & @ChristopherIrvine
      */
     public function Pizza(){
-        return $this->belongsTo(Pizza::class,'PizzaId');
+        return $this->belongsTo(Pizza::class,'PizzaId')->withTrashed();
     }
 
     /**

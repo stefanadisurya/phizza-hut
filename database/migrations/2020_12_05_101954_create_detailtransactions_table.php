@@ -14,7 +14,7 @@ class CreateDetailtransactionsTable extends Migration
     public function up()
     {
         /**
-         * Membuat table 'detailTransactions' pada database.
+         * Membuat table 'detailtransactions' pada database.
          * 
          * Made by @stefanadisurya & @ChristopherIrvine
          */
