@@ -62,7 +62,7 @@ class AdminController extends Controller
     {
         /* Validasi form. */
         $this->validate($request, [
-            'name' => 'required|max:20', /* Tidak boleh kosong, dan maksimum diisi dengan 20 character. */
+            'name' => 'required|min:4|max:20', /* Tidak boleh kosong, minimum diisi dengan 4 character dan maksimum 20 character. */
             'price' => 'required|numeric|min:10000', /* Tidak boleh kosong, harus diisi dengan angka yang nominalnya minimum 10000 */
             'description' => 'required|min:20', /* Tidak boleh kosong, dan minimum diisi dengan 20 character. */
             'image' => 'required|mimes:jpeg,jpg,png', /* Tidak boleh kosong, dan format upload harus jpeg, jpg, atau png. */
@@ -111,7 +111,7 @@ class AdminController extends Controller
     {
         /* Validasi form. */
         $request->validate([
-            'name' => 'required|max:20', /* Tidak boleh kosong, dan maksimum diisi dengan 20 character. */
+            'name' => 'required|min:4|max:20', /* Tidak boleh kosong, dan maksimum diisi dengan 20 character. */
             'price' => 'required|numeric|min:10000', /* Tidak boleh kosong, harus diisi dengan angka yang nominalnya minimum 10000 */
             'description' => 'required|min:20', /* Tidak boleh kosong, dan minimum diisi dengan 20 character. */
             'image' => 'required|mimes:jpeg,jpg,png', /* Tidak boleh kosong, dan format upload harus jpeg, jpg, atau png. */

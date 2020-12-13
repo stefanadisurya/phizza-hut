@@ -61,7 +61,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255'], /* Tidak boleh kosong, harus diisi dengan string yang maksimum panjangnya 255 character. */
+            'username' => ['required', 'string', 'min:4', 'max:255'], /* Tidak boleh kosong, harus diisi dengan string yang minimum panjangnya 4 character, dan maksimum panjangnya 255 character. */
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], /* Tidak boleh kosong, harus diisi dengan string dalam format email, maksimum panjangnya 255 character, dan harus unik dalam table 'users'. */
             'password' => ['required', 'string', 'min:6', 'confirmed'], /* Tidak boleh kosong, harus diisi dengan string yang minimum panjangnya 6 character, dan harus sama dengan kolom 'Confirm Password' pada form. */
             'address' => ['required', 'min:5'], /* Tidak boleh kosong, harus diisi dengan minimum panjnagnya 5 chracter. */
