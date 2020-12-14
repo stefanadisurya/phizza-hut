@@ -65,7 +65,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'], /* Tidak boleh kosong, harus diisi dengan string dalam format email, maksimum panjangnya 255 character, dan harus unik dalam table 'users'. */
             'password' => ['required', 'string', 'min:6', 'confirmed'], /* Tidak boleh kosong, harus diisi dengan string yang minimum panjangnya 6 character, dan harus sama dengan kolom 'Confirm Password' pada form. */
             'address' => ['required', 'min:5'], /* Tidak boleh kosong, harus diisi dengan minimum panjnagnya 5 chracter. */
-            'phoneNumber' => ['required', 'numeric', 'digits:6'], /* Tidak boleh kosong, harus diisi dengan angka yang minimum panjangnya 6 digit. */
+            'phoneNumber' => ['required', 'numeric'], /* Tidak boleh kosong, harus diisi dengan angka. */
             'gender' => ['required'] /* Tidak boleh kosong. */
         ]);
     }
